@@ -3,6 +3,9 @@ import Menu from './Menu';
 import Categories from './Categories';
 import items from './data';
 
+const allCategories = ['all', ...new Set(items.map((item) => item.category))];
+console.log(allCategories);
+
 function App() {
   const [menuItems, setMenuItems] = useState(items);
   const [category, setCategory] = useState([]);
@@ -42,6 +45,8 @@ export default App;
 // 6) will need to setup a filter() method for the category prop which will list the menu items based on category
 
 // two approaches that will be taken: manual and dynamic
+
+// MANUAL APPROACH
 // 7a) create a function that will take in a string and want to iterate the original array (items from the data component)
 // 8a) setup a filter() method to the original array (items) and if an item category matches the string that is passing in then return it to the new variable
 // 9a) invoke the state function passing the new variable that filters the category prop
@@ -49,3 +54,10 @@ export default App;
 // 11a) create buttons that will invoke the filter function once clicked on
 // ISSUES: lack of a button that has a functionality for 'all' meaning a reset button; and not in sync with the data meaning that you will have to manually update the data if there is a change to the original array
 // 12a) now to create a condition within the filter function that if the string is equal to 'all' then to showcase all the items in the array
+
+// DYNAMIC APPROACH
+// want to filter the category and obtain the unique values even if the array changes
+// 7b) setup a function that will only get the unique value (in category) using the new Set() method [data structure]
+// 8b) you'll also need to set it into an array (it currently sets into an object)
+// 9b) you set the initial value in the array ('all'), then use the spread operator to iterate the rest of the categories
+// console.log will show: ['all', 'breakfast', 'lunch', 'shakes']
