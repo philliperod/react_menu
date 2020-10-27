@@ -4,11 +4,10 @@ import Categories from './Categories';
 import items from './data';
 
 const allCategories = ['all', ...new Set(items.map((item) => item.category))];
-console.log(allCategories);
 
 function App() {
   const [menuItems, setMenuItems] = useState(items);
-  const [category, setCategory] = useState([]);
+  const [category, setCategory] = useState(allCategories);
 
   const filterItems = (category) => {
     if (category === 'all') {
@@ -26,7 +25,7 @@ function App() {
           <h2>Our Menu</h2>
           <div className="underline"></div>
         </div>
-        <Categories filterItems={filterItems} />
+        <Categories category={category} filterItems={filterItems} />
         <Menu items={menuItems} />
       </section>
     </main>
@@ -61,3 +60,12 @@ export default App;
 // 8b) you'll also need to set it into an array (it currently sets into an object)
 // 9b) you set the initial value in the array ('all'), then use the spread operator to iterate the rest of the categories
 // console.log will show: ['all', 'breakfast', 'lunch', 'shakes']
+// 10b) set the default value of the second useState hook as the allCategories
+// 11b) create a key attribute for the state value category into the Categories component
+// 12b) in the Categories component, rather than having to create each button for each category prop you can use map() method to iterate all of them
+// 13b) in the Categories component, we will put the state value category to access it
+// 14b) in the jsx, create a map function and for each item we want to return a button
+// 15b) first parameter will represent each string in the array created from allCategories that is stored as a state value
+// 16b) and because it is a list, include the index in the parameter so we can use them
+// 17b) in the button tag, key attribute will equal to the index of the array
+// 18b) create an onClick handler that invokes the filterItems function which access the string from the map() method; between the tags will also be the string passed into the map() method
