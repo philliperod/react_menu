@@ -8,6 +8,10 @@ function App() {
   const [category, setCategory] = useState([]);
 
   const filterItems = (category) => {
+    if (category === 'all') {
+      setMenuItems(items);
+      return;
+    }
     const newItems = items.filter((item) => item.category === category);
     setMenuItems(newItems);
   };
@@ -43,3 +47,5 @@ export default App;
 // 9a) invoke the state function passing the new variable that filters the category prop
 // 10a) create a key attribute that access the filter function in the Categories component
 // 11a) create buttons that will invoke the filter function once clicked on
+// ISSUES: lack of a button that has a functionality for 'all' meaning a reset button; and not in sync with the data meaning that you will have to manually update the data if there is a change to the original array
+// 12a) now to create a condition within the filter function that if the string is equal to 'all' then to showcase all the items in the array
